@@ -151,6 +151,13 @@ public class UserEFController : ControllerBase
     }
 
 
+    [HttpGet("UserJobInfoGetList")]
+    public IEnumerable<UserJobInfo> GetUserJobInfoList()
+    {
+        return _userRepository.GetEntitiesList<UserJobInfo>();
+    }
+
+
     [HttpGet("UserJobInfo/{userId}")]
     public UserJobInfo GetUserJobInfoEF(int userId)
     {

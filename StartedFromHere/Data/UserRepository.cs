@@ -1,3 +1,4 @@
+using System.Collections;
 using DotnetAPI.Models;
 
 namespace DotnetAPI.Data
@@ -84,6 +85,16 @@ namespace DotnetAPI.Data
             }
             
             throw new Exception("Failed to Get User");
+        }
+
+        public IEnumerable <T> GetEntitiesList<T>() where T: class
+        {
+            IEnumerable<T> entities = _entityFramework.Set<T>().ToList();
+            if (entities != null)
+            {
+                return entities;
+            }
+            throw new Exception("No entities of this type was found");
         }
     }
 }
